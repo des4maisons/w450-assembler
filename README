@@ -1,0 +1,12 @@
+- operands should be separated by ' ', not by ','
+- label definitions should be on their own line
+- there should be no tabs, only spaces for indenting code
+- assembler does not resolve labels. These must be resolved by hand.
+    label definitions are printed as comments in the output in the right spot.
+- it recognizes 'mv' and 'mvi', not 'mov' and 'movi'
+- offsets and immediate values should be in decimal.
+    immediate values should be unsigned.
+- comments following an instruction should be preceded by a space
+- comments on lines by themselves are ignored
+- everything after a valid instruction followed by a space is ignored
+- instruction # is printed as a comment before each line, as in addArray.data
