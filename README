@@ -1,12 +1,43 @@
-- operands should be separated by ' ', not by ','
-- label definitions should be on their own line
-- there should be no tabs, only spaces for indenting code
+usage: awk -f assembler.awk <filename>
+or, chmod u+x assembler.awk
+    ./assembler.awk <filename>
+Make sure you're using gnu awk. On the linux machines, awk == gawk, but on
+the solaris machines, you have to invoke gawk, and change the "shebang" line
+to /software/gnu/bin/gawk.
+
+Assembly code recognized by the assembler:
+- operands should be separated by ' ', not by ',' as in the assignment spec
+- label definitions should be on a line by themselves
+- use spaces for indenting code -- assembler.awk will croak on tabs
 - assembler does not resolve labels. These must be resolved by hand.
-    label definitions are printed as comments in the output in the right spot.
-- it recognizes 'mv' and 'mvi', not 'mov' and 'movi'
+    Label definitions are printed as comments in the output at the right spot.
+- assembler recognizes 'mv' and 'mvi' like in addArray.data,
+    not 'mov' and 'movi' like in assignment spec (but you can just change this)
 - offsets and immediate values should be in decimal.
-    immediate values should be unsigned.
+    Immediate values should be unsigned.
 - comments following an instruction should be preceded by a space
 - comments on lines by themselves are ignored
 - everything after a valid instruction followed by a space is ignored
-- instruction # is printed as a comment before each line, as in addArray.data
+- in output, instruction # is printed as a comment before each line,
+    as in addArray.data
+
+
+Copyright (C) 2011 by Marguerite Wolever
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
