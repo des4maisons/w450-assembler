@@ -22,7 +22,7 @@ function eight_bit_unsigned_binary(num)
     bin = ""
     while (x > 0)
     {
-        bin = bin x%2
+        bin = x%2 bin
         x = int(x/2)
     }
 
@@ -42,7 +42,7 @@ function eight_bit_twos_complement(num)
     {
         while (x > 0)
         {
-            bin = bin x%2
+            bin = x%2 bin
             x = int(x/2)
         }
 
