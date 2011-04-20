@@ -1,8 +1,0 @@
-- The instruction
-    mvi r0 #128
-  outputs
-    /* 00 */    10100xxx 00000001
-  instead of
-    /* 00 */    10100xxx 10000000
-
-  Thanks Kyle! Will fix this soon maybe.

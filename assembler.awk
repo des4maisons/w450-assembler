@@ -1,7 +1,7 @@
 #!/usr/bin/awk -f
 function two_bit_binary(num)    # only works for 0 <= num <= 3
 {
-    if (num ~ /x/)
+    if (num ~ /x/)  # x is for 'doesn't matter'
         return num
     if (num == 0)
         return "00"
@@ -58,7 +58,7 @@ function eight_bit_twos_complement(num)
         x -= 1
         while (x > 0)
         {
-            bin = bin !(x%2)
+            bin = !(x%2) bin
             x = int(x/2)
         }
 
