@@ -102,19 +102,30 @@ $1 ~ /^[a-zA-Z][a-zA-Z0-9]*:$/ {    # label
 $1 ~ /^add$|^sub$|^mv$/ {
     print_ic()
     IC += 1
-    if ($2 ~ /^r[0-3]$/ && $3 ~ /^r[0-3]$/)
+    if ($2 ~ /^r[0-3]$/ && $3 ~ /^r[0-3]$/) # register DIRECT
     {
         reg1 = substr($2,2) + 0
         dest = 1
         reg0 = substr($3,2) + 0
+
+        if (reg0 == 0)  # avoid having r0 be reg0, which forces indirectness
+        {
+            if (reg1 == 0)
+                error("can't have both operands r0 in register direct mode");
+
+            tmp = reg0;
+            reg0 = reg1;
+            reg1 = tmp;
+            dst = 0;
+        }
     }
-    else if ($2 ~ /^\[r0\]$/ && $3 ~ /^r[0-3]$/)
+    else if ($2 ~ /^\[r0\]$/ && $3 ~ /^r[0-3]$/) # dest is register INDIRECT
     {
         reg0 = 0
         dest = 0
         reg1 = substr($3,2) + 0
     }
-    else if ($3 ~ /^\[r0\]$/ && $2 ~ /^r[0-3]$/)
+    else if ($3 ~ /^\[r0\]$/ && $2 ~ /^r[0-3]$/) # source is register INDIRECT
     {
         reg0 = 0
         dest = 1
