@@ -116,7 +116,7 @@ $1 ~ /^add$|^sub$|^mv$/ {
             tmp = reg0;
             reg0 = reg1;
             reg1 = tmp;
-            dst = 0;
+            dest = 0;
         }
     }
     else if ($2 ~ /^\[r0\]$/ && $3 ~ /^r[0-3]$/) # dest is register INDIRECT
